@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" type="text/css" href="./assets/style/success.css">
+  <script src="https://kit.fontawesome.com/b6d0b31b3a.js" crossorigin="anonymous"></script>
+    
+  <title>Invite Email Success</title>
+
+</head>
+<body>
+    <div class="background">
+        <div class="background_success">
+            <div class="information">
+                <div class="icon_check">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 21 21">
+                        <g fill="none">
+                        <circle cx="10.5" cy="10.5" r="10.5" fill="#FF6155"/>
+                        <path stroke="#FFF" stroke-width="2" d="M6 11.381 8.735 14 15 8"/>
+                        </g>
+                    </svg>
+                </div>
+                <div class="title">
+                    Thanks for subscribing!
+                </div>
+                <div class="text_information">
+                    A confirmation email has been sent to <b id="userEmail"></b>. Please open it and click the button inside to confirm you subscription.
+                </div>
+                <button class="button_dimiss" type="submit" id="submitButton" onclick="handleButtonClick()">Dismiss message</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var userEmail = sessionStorage.getItem("userEmail"); // Obtém o valor do e-mail da sessionStorage
+            var userEmailElement = document.getElementById("userEmail");
+            if (userEmail) {
+                userEmailElement.textContent = userEmail; // Define o valor do e-mail na div
+            } else {
+                userEmailElement.textContent = "your email address"; // Define um valor padrão caso o e-mail não esteja disponível
+            }
+        });
+
+        function handleButtonClick() {
+            var button = document.getElementById("submitButton");
+            button.classList.add("clicked"); // Adiciona a classe 'clicked' ao botão quando ele é clicado
+        }
+
+        setTimeout(function() {
+            button.classList.remove("clicked");
+        }, 300);
+    </script>
+</body>
+</html>
